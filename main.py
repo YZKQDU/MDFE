@@ -80,7 +80,7 @@ class FSL(nn.Module):
     def __init__(self, sample_len, in_channels, out_channels, kernel_size, stride, padding, spatial_att_enable=True, channel_att_enable=True, residual_enable=True):
         super(FSL, self).__init__()
         self.out_channels=out_channels
-        self.sample_len = sample_len #长度
+        self.sample_len = sample_len
         self.out_len = int((sample_len+2*padding-(kernel_size-1)-1)/stride +1) 
         self.spatial_att_enable = spatial_att_enable
         self.channel_att_enable = channel_att_enable 
@@ -122,7 +122,6 @@ class FSL(nn.Module):
         x=conv_out+x
         return x 
 class AlexNet(nn.Module):
-    '''简化版的alexnet,效果更好'''
     def __init__(self, cfg):
         super(AlexNet, self).__init__()
         self.samp_len = cfg['sample_len']
